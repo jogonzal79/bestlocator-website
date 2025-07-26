@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="googlebot" content="index,follow" />
+  <meta name="bingbot" content="index,follow" />
+
+  <!-- PRIMARY META -->
+  <title>Best Locator | AI-Powered Selector Generator for UI Testing</title>
+  <meta name="description" content="The world's first AI-powered selector generator with organic navigation and intelligent toggle mode. Generate professional-grade selectors for Playwright, Selenium, Cypress & more." />
+<meta name="author" content="Jonathan Gonzalez" />
+  <link rel="canonical" href="https://bestlocator.netlify.app/" />
+  <link rel="alternate" hreflang="en" href="https://bestlocator.netlify.app/" />
+
+  <!-- OPEN GRAPH / SOCIAL -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Best Locator" />
+  <meta property="og:url" content="https://bestlocator.netlify.app/" />
+  <meta property="og:title" content="Best Locator – Universal Selector Generator with Organic Navigation" />
+  <meta property="og:description" content="Generate professional-grade selectors for Playwright, Selenium, Cypress. Navigate freely, toggle capture mode, reduce test maintenance by up to 90%." />
+  <meta property="og:image" content="https://bestlocator.netlify.app/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://bestlocator.netlify.app/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@bestlocator" />
+  <meta name="twitter:creator" content="@jogonzal79" />
+  <meta name="twitter:url" content="https://bestlocator.netlify.app/" />
+  <meta name="twitter:title" content="Best Locator – Universal Selector Generator for UI Testing" />
+  <meta name="twitter:description" content="Organic navigation & intelligent toggle mode. Professional selectors for Playwright, Selenium, Cypress & more." />
+  <meta name="twitter:image" content="https://bestlocator.netlify.app/twitter-image.jpg" />
+  <meta name="twitter:image:alt" content="Best Locator CLI tool showing toggle mode selector generation" />
+
+  <!-- PWA / Icons -->
+  <meta name="theme-color" content="#00ff88" />
+  <meta name="msapplication-TileColor" content="#00ff88" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://bestlocator.netlify.app/#website","url":"https://bestlocator.netlify.app/","name":"Best Locator","description":"Universal selector generator for UI testing frameworks with organic navigation.","publisher":{"@id":"https://bestlocator.netlify.app/#organization"},"inLanguage":"en"},{"@type":"Organization","@id":"https://bestlocator.netlify.app/#organization","name":"Best Locator","url":"https://bestlocator.netlify.app/","sameAs":["https://github.com/jogonzal79/best-locator","https://www.linkedin.com/in/jonathan-g-33607648/"]},{"@type":"SoftwareApplication","@id":"https://bestlocator.netlify.app/#app","name":"Best Locator","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","softwareVersion":"1.0.0","url":"https://bestlocator.netlify.app/","downloadUrl":"https://github.com/jogonzal79/best-locator","description":"Universal selector generator with organic navigation and intelligent toggle mode for UI testing frameworks.","author":{"@type":"Person","name":"Jonathan Gonzalez","url":"https://www.linkedin.com/in/jonathan-g-33607648/"},"publisher":{"@id":"https://bestlocator.netlify.app/#organization"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},"featureList":["Organic Navigation","Intelligent Toggle Mode","Professional Selectors","Multi-page Capture","Multi-framework Support","Testing-specific Attributes"]}]}</script>
+
+  <!-- CRITICAL CSS -->
+  <style>
+    /* RESET */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#e0e0e0;background:#0a0a0a;overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{color:#00ff88;text-decoration:none}
+    a:focus-visible{outline:2px solid #00ff88;outline-offset:2px}
+    :target{scroll-margin-top:5rem}
+
+    /* LAYOUT */
+    .container{max-width:1200px;margin-inline:auto;padding-inline:20px}
+    header.nav{position:fixed;top:0;left:0;right:0;width:100%;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);z-index:1000;padding-block:1rem;transition:all .3s ease}
+    .nav-container{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1.8rem;font-weight:700;color:#00ff88;display:flex;align-items:center;gap:.5rem}
+    .logo::before{content:"🎯"}
+    .nav-links{display:flex;list-style:none;gap:2rem}
+    .nav-links a{color:#fff;font-weight:500;position:relative;transition:color .3s ease}
+    .nav-links a:hover{color:#00ff88}
+    .nav-links a::after{content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#00ff88;transition:width .3s ease}
+    .nav-links a:hover::after{width:100%}
+
+    main{display:block}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 100%);position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"%2300ff88\" opacity=\"0.1\"/></svg>') 0 0/50px 50px repeat;animation:float 20s infinite linear}
+    @keyframes float{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-100px) rotate(360deg)}}
+    .hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .hero-text h1{font-size:clamp(2.25rem,5vw,3.5rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.2}
+    .hero-text .highlight{background:linear-gradient(45deg,#00ff88,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-text p{font-size:1.2rem;color:#ccc;margin-bottom:2rem;max-width:500px}
+    .cta-group{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+    .btn{padding:1rem 2rem;border:none;border-radius:50px;font-weight:600;font-size:1rem;cursor:pointer;transition:all .3s ease;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+    .btn-primary{background:linear-gradient(45deg,#00ff88,#00d4ff);color:#000}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,255,136,.3)}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid #333}
+    .btn-secondary:hover{border-color:#00ff88;color:#00ff88}
+    .hero-demo{position:relative;background:#1a1a2e;border-radius:15px;padding:2rem;border:1px solid #333;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .terminal{background:#000;border-radius:10px;padding:1rem;font-family:'Courier New',monospace;color:#00ff88;font-size:.9rem;overflow:hidden}
+    .terminal-header{display:flex;gap:.5rem;margin-bottom:1rem}
+    .terminal-dot{width:12px;height:12px;border-radius:50%}
+    .dot-red{background:#ff5f5f}.dot-yellow{background:#ffff5f}.dot-green{background:#5fff5f}
+    .code-line{opacity:0;animation:typewriter .8s forwards}
+    .code-line:nth-child(1){animation-delay:.5s}.code-line:nth-child(2){animation-delay:1.5s}.code-line:nth-child(3){animation-delay:2.5s}.code-line:nth-child(4){animation-delay:3.5s}
+    @keyframes typewriter{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+
+    /* Toggle indicator styles */
+    .toggle-demo{display:flex;align-items:center;gap:1rem;margin-top:1rem;padding:1rem;background:rgba(0,255,136,.1);border-radius:8px;border:1px solid rgba(0,255,136,.3)}
+    .toggle-indicator{width:12px;height:12px;border-radius:50%;animation:pulse 2s infinite}
+    .toggle-red{background:#ff5f5f}
+    .toggle-green{background:#5fff5f}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .toggle-text{font-size:.9rem;color:#ccc}
+
+    /* SECTIONS SHARED */
+    section{scroll-margin-top:6rem;padding-block:5rem}
+    .section-title{text-align:center;font-size:clamp(2rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;position:relative;z-index:2}
+    .section-subtitle{text-align:center;font-size:1.2rem;color:#ccc;margin-bottom:3rem;max-width:600px;margin-inline:auto;position:relative;z-index:2}
+    .fade-in{opacity:0;transform:translateY(30px);transition:all .8s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    /* FEATURES */
+    .features{background:linear-gradient(135deg,#111 0%,#1a1a2e 100%);position:relative}
+    .features::before{content:"";position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"0.5\" fill=\"%2300ff88\" opacity=\"0.05\"/></svg>') 0 0/100px 100px repeat}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;position:relative;z-index:2}
+    .feature-card{background:rgba(26,26,46,.8);backdrop-filter:blur(10px);padding:2rem;border-radius:15px;border:1px solid rgba(0,255,136,.2);transition:all .3s ease;position:relative;overflow:hidden}
+    .feature-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(45deg,#00ff88,#00d4ff);transform:translateX(-100%);transition:transform .3s ease}
+    .feature-card:hover::before{transform:translateX(0)}
+    .feature-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,255,136,.2);border-color:rgba(0,255,136,.4)}
+    .feature-icon{font-size:3rem;margin-bottom:1rem;filter:drop-shadow(0 0 10px rgba(0,255,136,.3))}
+    .feature-card h3{color:#fff;font-size:1.4rem;margin-bottom:1rem;font-weight:600}
+    .feature-card p{color:#e0e0e0;line-height:1.7;font-size:1rem}
+
+    /* WORKFLOW SECTION */
+    .workflow{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);position:relative}
+    .workflow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:3rem;position:relative;z-index:2}
+    .workflow-step{background:rgba(26,26,46,.8);backdrop-filter:blur(10px);padding:2rem;border-radius:15px;border:1px solid rgba(0,255,136,.2);text-align:center;transition:all .3s ease;position:relative}
+    .workflow-step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(45deg,#00ff88,#00d4ff);transform:translateX(-100%);transition:transform .3s ease}
+    .workflow-step:hover::before{transform:translateX(0)}
+    .workflow-step:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,255,136,.2);border-color:rgba(0,255,136,.4)}
+    .step-number{width:40px;height:40px;background:linear-gradient(45deg,#00ff88,#00d4ff);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;margin:0 auto 1rem}
+    .workflow-step h3{color:#fff;font-size:1.2rem;margin-bottom:1rem;font-weight:600}
+    .workflow-step p{color:#e0e0e0;line-height:1.6;font-size:.95rem}
+
+    /* FRAMEWORK SUPPORT */
+    .framework-support{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);position:relative}
+    .framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;position:relative;z-index:2}
+    .framework-category{background:rgba(26,26,46,.8);backdrop-filter:blur(10px);padding:2rem;border-radius:15px;border:1px solid rgba(0,255,136,.2);text-align:center;transition:all .3s ease}
+    .framework-category:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,255,136,.2);border-color:rgba(0,255,136,.4)}
+    .framework-category h3{color:#fff;font-size:1.3rem;margin-bottom:1.5rem;font-weight:600}
+    .framework-list{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+    .framework-tag{background:rgba(0,255,136,.1);color:#00ff88;padding:.5rem 1rem;border-radius:25px;font-size:.9rem;font-weight:500;border:1px solid rgba(0,255,136,.3);transition:all .3s ease}
+    .framework-tag:hover{background:rgba(0,255,136,.2);transform:translateY(-2px)}
+    .framework-tag.ai-tag{background:rgba(255,165,0,.1);color:#ffa500;border-color:rgba(255,165,0,.3)}
+    .framework-tag.ai-tag:hover{background:rgba(255,165,0,.2)}
+    
+    .support-matrix{margin-top:3rem;position:relative;z-index:2}
+    .support-matrix h3{color:#fff;text-align:center;font-size:1.5rem;margin-bottom:2rem;font-weight:600}
+    .matrix-table{width:100%;max-width:900px;margin:0 auto;background:rgba(26,26,46,.9);backdrop-filter:blur(15px);border-radius:15px;overflow:hidden;border:1px solid rgba(0,255,136,.3)}
+    .matrix-table th{background:rgba(0,255,136,.2);color:#fff;padding:1rem;text-align:center;font-weight:600;font-size:.95rem}
+    .matrix-table td{padding:1rem;border-bottom:1px solid rgba(255,255,255,.1);color:#e0e0e0;text-align:center}
+    .matrix-table tr:last-child td{border-bottom:none}
+    .support-yes{color:#5fff5f;font-weight:600;font-size:1.2rem}
+    .support-no{color:#ff5f5f;font-weight:600;font-size:1.2rem}
+    .support-partial{color:#ffff5f;font-weight:600;font-size:1.2rem}
+    
+    .code-examples{margin-top:3rem;position:relative;z-index:2}
+    .code-examples h3{color:#fff;text-align:center;font-size:1.5rem;margin-bottom:2rem;font-weight:600}
+    .example-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem}
+    .code-example{background:rgba(26,26,46,.8);backdrop-filter:blur(10px);padding:2rem;border-radius:15px;border:1px solid rgba(0,255,136,.2)}
+    .code-example h4{color:#00ff88;font-size:1.1rem;margin-bottom:1rem;font-weight:600}
+    .selector-priority{background:linear-gradient(135deg,#111 0%,#1a1a2e 100%);position:relative}
+    .priority-table{width:100%;max-width:800px;margin:2rem auto;background:rgba(26,26,46,.9);backdrop-filter:blur(15px);border-radius:15px;overflow:hidden;border:1px solid rgba(0,255,136,.3)}
+    .priority-table th{background:rgba(0,255,136,.2);color:#fff;padding:1rem;text-align:left;font-weight:600}
+    .priority-table td{padding:1rem;border-bottom:1px solid rgba(255,255,255,.1);color:#e0e0e0}
+    .priority-table tr:last-child td{border-bottom:none}
+    .priority-table code{background:rgba(0,255,136,.1);padding:.2rem .5rem;border-radius:4px;font-family:'Courier New',monospace;color:#00ff88}
+    .confidence-high{color:#5fff5f;font-weight:600}
+    .confidence-medium{color:#ffff5f;font-weight:600}
+    .confidence-low{color:#ff9f5f;font-weight:600}
+
+    /* COMPARISON */
+    .comparison{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);position:relative}
+    .comparison::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(255,68,68,.1) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(0,255,136,.1) 0%,transparent 50%)}
+    .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;position:relative;z-index:2}
+    .comparison-card{background:rgba(26,26,46,.9);backdrop-filter:blur(15px);padding:2.5rem;border-radius:15px;border:2px solid;transition:all .3s ease;position:relative;overflow:hidden}
+    .comparison-card.traditional{border-color:rgba(255,68,68,.5)}
+    .comparison-card.bestlocator{border-color:rgba(0,255,136,.5)}
+    .comparison-card::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .3s ease}
+    .comparison-card.traditional::after{background:linear-gradient(45deg,rgba(255,68,68,.05),transparent)}
+    .comparison-card.bestlocator::after{background:linear-gradient(45deg,rgba(0,255,136,.05),transparent)}
+    .comparison-card:hover::after{opacity:1}
+    .comparison-card:hover{transform:translateY(-5px)}
+    .comparison-card.traditional:hover{box-shadow:0 20px 50px rgba(255,68,68,.2);border-color:rgba(255,68,68,.8)}
+    .comparison-card.bestlocator:hover{box-shadow:0 20px 50px rgba(0,255,136,.2);border-color:rgba(0,255,136,.8)}
+    .comparison-card h3{color:#fff;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;font-size:1.4rem;font-weight:600;position:relative;z-index:3}
+    .comparison-card.traditional h3::before{content:'❌';font-size:1.2rem}
+    .comparison-card.bestlocator h3::before{content:'✅';font-size:1.2rem}
+    .comparison-card p{color:#e0e0e0;margin-bottom:1.5rem;font-size:1rem;line-height:1.6;position:relative;z-index:3}
+    .code-block{background:rgba(0,0,0,.8);backdrop-filter:blur(5px);border-radius:8px;padding:1.5rem;margin-block:1.5rem;font-family:'Courier New',monospace;color:#ccc;overflow-x:auto;font-size:.9rem;line-height:1.4;position:relative;z-index:3}
+    .code-block.good{border-left:4px solid #00ff88;color:#e0e0e0}
+    .code-block.bad{border-left:4px solid #ff4444;color:#e0e0e0}
+    .comparison-card p:last-of-type{color:#e0e0e0;line-height:1.8;font-size:1rem;position:relative;z-index:3}
+
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg,#1a1a2e 0%,#00ff88 100%);text-align:center;color:#000}
+    .cta-section h2{font-size:clamp(2rem,4vw,2.5rem);font-weight:700;color:#000;margin-bottom:1rem}
+    .cta-section p{font-size:1.2rem;color:#333;margin-bottom:2rem}
+    .install-command{background:#000;color:#00ff88;padding:1rem 2rem;border-radius:10px;font-family:'Courier New',monospace;font-size:1.1rem;margin-block:2rem;display:inline-block;cursor:pointer;transition:all .3s ease}
+    .install-command:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+    .cta-section .cta-group{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:2rem}
+
+    /* FOOTER */
+    footer.footer{background:#000;color:#ccc;padding-block:3rem;text-align:center}
+    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
+    .footer-section h3{color:#fff;margin-bottom:1rem}
+    .footer-section a{color:#ccc;transition:color .3s ease}
+    .footer-section a:hover{color:#00ff88}
+    .social-links{display:flex;justify-content:center;gap:1rem;margin-top:2rem}
+    .social-links a{width:40px;height:40px;background:#333;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
+    .social-links a:hover{background:#00ff88;transform:translateY(-2px)}
+
+    /* RESPONSIVE */
+    @media (max-width:768px){
+      .hero-content{grid-template-columns:1fr;text-align:center}
+      .hero-text h1{font-size:2.5rem}
+      .nav-links{display:none}
+      .comparison-grid{grid-template-columns:1fr}
+      .cta-group{flex-direction:column;align-items:center}
+      .section-title{font-size:2rem}
+      .priority-table{font-size:.9rem}
+      .priority-table th,.priority-table td{padding:.7rem}
+    }
+
+    /* REDUCED MOTION ACCESSIBILITY */
+    @media (prefers-reduced-motion:reduce){
+      *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+    }
+  </style>
+
+    <style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal}
+    </style>
+    
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What makes Best-Locator selectors more reliable than code generators?","acceptedAnswer":{"@type":"Answer","text":"Best-Locator combines AI-assisted analysis with deterministic heuristics to target stable attributes and DOM context. It validates each selector and falls back to robust patterns when needed."}},{"@type":"Question","name":"Which test frameworks are supported?","acceptedAnswer":{"@type":"Answer","text":"Best-Locator outputs selectors optimized for Playwright, Selenium, and Cypress. You can use it with TypeScript, JavaScript, or Python projects."}},{"@type":"Question","name":"How do I install Best-Locator?","acceptedAnswer":{"@type":"Answer","text":"Install globally with: npm install -g bestlocator. Then run commands like: best-locator pick <url> or best-locator pick-toggle <url>."}},{"@type":"Question","name":"Can I use local AI models?","acceptedAnswer":{"@type":"Answer","text":"Yes. Best-Locator can integrate with local AI via Ollama when enabled, while maintaining a deterministic fallback to ensure consistent results."}},{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"You can generate selectors using the deterministic engine fully offline. AI-enhanced generation requires a local model that is available on your machine."}}]}</script>
+</head>
+<body>
+  <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+  <!-- NAVIGATION -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav-container">
+        <a href="#top" class="logo" aria-label="Best Locator home">Best Locator</a>
+        <ul class="nav-links" role="navigation" aria-label="Primary">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#workflow">How It Works</a></li>
+          <li><a href="#frameworks">Frameworks</a></li>
+          <li><a href="#selectors">Selectors</a></li>
+          <li><a href="#comparison">Comparison</a></li>
+          <li><a href="#install">Install</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 id="hero-heading">The World's First <span class="highlight">AI-Powered Selector Generator</span> with Organic Navigation</h1>
+            <p>Generate professional-grade selectors with <strong>intelligent toggle mode</strong> and <strong>AI optimization</strong>. Navigate freely, login, browse multiple pages, then capture selectors with <strong>95% confidence</strong>.</p>
+            <div class="cta-group">
+              <a href="#install" class="btn btn-primary" aria-label="Install Best Locator">🚀 Install Now</a>
+              <a href="https://github.com/jogonzal79/best-locator" class="btn btn-secondary" aria-label="View on GitHub">⭐ GitHub</a>
+            </div>
+          </div>
+          <div class="hero-demo">
+            <div class="terminal" role="img" aria-label="Terminal showing Best Locator usage">
+              <div class="terminal-header">
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
+              </div>
+              <div class="code-line">$ npm install -g bestlocator</div>
+              <div class="code-line">$ best-locator pick-toggle https://app.com</div>
+              <div class="code-line">🔴 Navigate freely (CTRL+S to start)</div>
+              <div class="code-line">🟢 Selector mode ON (click to capture)</div>
+            </div>
+            <div class="toggle-demo">
+              <div class="toggle-indicator toggle-red"></div>
+              <span class="toggle-text">Red: Navigate freely</span>
+              <div class="toggle-indicator toggle-green"></div>
+              <span class="toggle-text">Green: Capture mode</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 class="section-title" id="features-heading">Revolutionary Features</h2>
+        <p class="section-subtitle">Traditional selector generators are broken. Best Locator changes everything with AI-powered intelligence.</p>
+        <div class="features-grid">
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🌐</div>
+            <h3>Organic Navigation</h3>
+            <p>Navigate like a real user - browse, login, complete authentication flows. No more static page snapshots or forced immediate captures.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🎯</div>
+            <h3>Intelligent Toggle Mode</h3>
+            <p><kbd>CTRL+S</kbd> to turn ON selector mode, <kbd>CTRL+D</kbd> to turn OFF. Capture elements at the exact moment when they're in the right context.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Professional Selectors</h3>
+            <p>Prioritizes <code>data-test</code>, <code>data-testid</code>, <code>aria-label</code> and testing-specific attributes. Avoids fragile CSS classes and temporary IDs.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🔄</div>
+            <h3>Multi-page Capture</h3>
+            <p>Collect selectors from different pages in a single session. Perfect for onboarding flows, e-commerce checkouts, and multi-step processes.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🎨</div>
+            <h3>Universal Framework Support</h3>
+            <p>Generate code for <strong>Playwright</strong>, <strong>Selenium</strong>, and <strong>Cypress</strong> in JavaScript, TypeScript, Python, Java, and C#.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🤖</div>
+            <h3>AI-Powered Enhancement</h3>
+            <p>Integrates with <strong>OpenAI</strong> and <strong>Ollama</strong> to provide intelligent selector suggestions and optimizations. AI analyzes your page structure to recommend the most robust selectors.</p>
+          </article>
+          <article class="feature-card fade-in">
+            <div class="feature-icon" aria-hidden="true">🛡️</div>
+            <h3>95% Confidence Rating</h3>
+            <p>Advanced validation and scoring system ensures selectors are unique, stable, and maintainable. Industry-leading reliability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="workflow" id="workflow" aria-labelledby="workflow-heading">
+      <div class="container">
+        <h2 class="section-title" id="workflow-heading">How Toggle Mode Works</h2>
+        <p class="section-subtitle">The breakthrough feature that makes Best Locator unique</p>
+        <div class="workflow-steps">
+          <div class="workflow-step fade-in">
+            <div class="step-number">1</div>
+            <h3>Navigate Freely</h3>
+            <p>Browse your app normally - login, navigate between pages, interact with elements. Red indicator shows you're in navigation mode.</p>
+          </div>
+          <div class="workflow-step fade-in">
+            <div class="step-number">2</div>
+            <h3>Press CTRL+S</h3>
+            <p>Turn ON selector mode when you're ready to capture. Green indicator shows clicks will now generate selectors instead of triggering actions.</p>
+          </div>
+          <div class="workflow-step fade-in">
+            <div class="step-number">3</div>
+            <h3>Click Elements</h3>
+            <p>Click on elements you want to capture. Each click generates a professional selector with confidence rating and framework-specific code.</p>
+          </div>
+          <div class="workflow-step fade-in">
+            <div class="step-number">4</div>
+            <h3>Press CTRL+D</h3>
+            <p>Turn OFF selector mode to navigate to other pages or sections. Toggle ON/OFF as many times as needed in a single session.</p>
+          </div>
+          <div class="workflow-step fade-in">
+            <div class="step-number">5</div>
+            <h3>Press ESC</h3>
+            <p>Finish the session and get all captured selectors with combined test snippets. All code is automatically copied to clipboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRAMEWORK SUPPORT -->
+    <section class="framework-support" id="frameworks" aria-labelledby="frameworks-heading">
+      <div class="container">
+        <h2 class="section-title" id="frameworks-heading">Universal Framework & Language Support</h2>
+        <p class="section-subtitle">One tool, multiple frameworks and languages. Generate code for your entire tech stack.</p>
+        
+        <!-- Framework Grid -->
+        <div class="framework-grid">
+          <div class="framework-category fade-in">
+            <h3>🎭 Testing Frameworks</h3>
+            <div class="framework-list">
+              <span class="framework-tag">Playwright</span>
+              <span class="framework-tag">Selenium</span>
+              <span class="framework-tag">Cypress</span>
+            </div>
+          </div>
+          
+          <div class="framework-category fade-in">
+            <h3>💻 Programming Languages</h3>
+            <div class="framework-list">
+              <span class="framework-tag">JavaScript</span>
+              <span class="framework-tag">TypeScript</span>
+              <span class="framework-tag">Python</span>
+              <span class="framework-tag">Java</span>
+              <span class="framework-tag">C#</span>
+            </div>
+          </div>
+          
+          <div class="framework-category fade-in">
+            <h3>🤖 AI Providers</h3>
+            <div class="framework-list">
+              <span class="framework-tag ai-tag">OpenAI</span>
+              <span class="framework-tag ai-tag">Ollama</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Matrix -->
+        <div class="support-matrix fade-in">
+          <h3>Framework Support Matrix</h3>
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Framework</th>
+                <th>JavaScript</th>
+                <th>TypeScript</th>
+                <th>Python</th>
+                <th>Java</th>
+                <th>C#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Playwright</strong></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+              </tr>
+              <tr>
+                <td><strong>Selenium</strong></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+              </tr>
+              <tr>
+                <td><strong>Cypress</strong></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-yes">✅</span></td>
+                <td><span class="support-no">❌</span></td>
+                <td><span class="support-no">❌</span></td>
+                <td><span class="support-no">❌</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Code Examples -->
+        <div class="code-examples fade-in">
+          <h3>Generate Code for Any Framework</h3>
+          <div class="example-grid">
+            <div class="code-example">
+              <h4>Playwright (TypeScript)</h4>
+              <div class="code-block good">
+                <code># Generate TypeScript code for Playwright
+best-locator pick https://app.com playwright typescript
+
+# Output:
+await page.locator('[data-test="username"]')
+await page.locator('[data-testid="submit-btn"]')</code>
+              </div>
+            </div>
+            
+            <div class="code-example">
+              <h4>Selenium (Python)</h4>
+              <div class="code-block good">
+                <code># Generate Python code for Selenium
+best-locator pick https://app.com selenium python
+
+# Output:
+driver.find_element(By.CSS_SELECTOR, '[data-test="username"]')
+driver.find_element(By.CSS_SELECTOR, '[data-testid="submit-btn"]')</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="selector-priority" id="selectors" aria-labelledby="selectors-heading">
+      <div class="container">
+        <h2 class="section-title" id="selectors-heading">Professional Selector Priority</h2>
+        <p class="section-subtitle">Best Locator follows industry best practices for selector generation</p>
+        <table class="priority-table">
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Selector Type</th>
+              <th>Confidence</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1st</td>
+              <td><code>data-test</code></td>
+              <td><span class="confidence-high">95%</span></td>
+              <td><code>[data-test="username"]</code></td>
+            </tr>
+            <tr>
+              <td>1st</td>
+              <td><code>data-testid</code></td>
+              <td><span class="confidence-high">95%</span></td>
+              <td><code>[data-testid="submit-btn"]</code></td>
+            </tr>
+            <tr>
+              <td>2nd</td>
+              <td><code>data-cy</code></td>
+              <td><span class="confidence-high">90%</span></td>
+              <td><code>[data-cy="login-form"]</code></td>
+            </tr>
+            <tr>
+              <td>3rd</td>
+              <td><code>aria-label</code></td>
+              <td><span class="confidence-medium">85%</span></td>
+              <td><code>[aria-label="Close dialog"]</code></td>
+            </tr>
+            <tr>
+              <td>4th</td>
+              <td><code>role</code></td>
+              <td><span class="confidence-medium">80%</span></td>
+              <td><code>[role="button"]</code></td>
+            </tr>
+            <tr>
+              <td>5th</td>
+              <td><code>name</code></td>
+              <td><span class="confidence-medium">75%</span></td>
+              <td><code>[name="email"]</code></td>
+            </tr>
+            <tr>
+              <td>6th</td>
+              <td><code>id</code></td>
+              <td><span class="confidence-low">70%</span></td>
+              <td><code>#username</code></td>
+            </tr>
+            <tr>
+              <td>7th</td>
+              <td><code>text</code></td>
+              <td><span class="confidence-low">60%</span></td>
+              <td><code>text="Sign In"</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="comparison" id="comparison" aria-labelledby="comparison-heading">
+      <div class="container">
+        <h2 class="section-title" id="comparison-heading">Traditional Approach vs. Best Locator</h2>
+        <p class="section-subtitle">See why traditional selector generators fail and how Best Locator solves it</p>
+        <div class="comparison-grid">
+          <div class="comparison-card traditional">
+            <h3>Traditional Generators</h3>
+            <p><strong>The broken approach:</strong> Immediate capture on static pages with unreliable selectors</p>
+            <div class="code-block bad">
+              <code># Typical output from traditional tools
+await page.locator('#user-name-input-field-123')
+await page.locator('.MuiButton-containedPrimary-456')
+await page.locator('div:nth-child(3) > input:nth-child(2)')
+await page.locator('#dynamic-generated-id-789')</code>
+            </div>
+            <p>❌ <strong>Forced immediate capture</strong> - No time to navigate or authenticate<br>
+            ❌ <strong>Static page snapshots</strong> - Can't handle login flows or dynamic content<br>
+            ❌ <strong>CSS-dependent selectors</strong> - Break when styling changes<br>
+            ❌ <strong>Generated IDs</strong> - Change with every deployment<br>
+            ❌ <strong>Brittle XPath</strong> - Fragile to DOM structure changes<br>
+            ❌ <strong>No context awareness</strong> - Elements captured without proper state</p>
+          </div>
+          <div class="comparison-card bestlocator">
+            <h3>Best Locator</h3>
+            <p><strong>The professional approach:</strong> Organic navigation with testing-specific attributes</p>
+            <div class="code-block good">
+              <code># Professional output from Best Locator
+await page.locator('[data-test="username"]')
+await page.locator('[data-testid="login-button"]')
+await page.locator('[aria-label="Submit form"]')
+await page.locator('[data-test="user-profile"]')</code>
+            </div>
+            <p>✅ <strong>Organic navigation</strong> - Browse naturally, login, navigate multiple pages<br>
+            ✅ <strong>Intelligent toggle mode</strong> - CTRL+S/CTRL+D for precise control<br>
+            ✅ <strong>AI-powered optimization</strong> - OpenAI & Ollama integration for intelligent suggestions<br>
+            ✅ <strong>Testing-first selectors</strong> - Prioritizes data-test, aria-* attributes<br>
+            ✅ <strong>95% confidence rating</strong> - Industry-leading reliability<br>
+            ✅ <strong>Multi-page sessions</strong> - Capture from different pages in one session<br>
+            ✅ <strong>Context-aware capture</strong> - Elements captured in their proper state</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA INSTALL -->
+    <section class="cta-section" id="install" aria-labelledby="install-heading">
+      <div class="container">
+        <h2 id="install-heading">Start Generating Professional Selectors</h2>
+        <p>Join developers and QA engineers who have revolutionized their testing workflow</p>
+        <div class="install-command" role="button" tabindex="0" aria-pressed="false" data-copy="npm install -g bestlocator">npm install -g bestlocator</div>
+        <div class="cta-group">
+          <a href="https://github.com/jogonzal79/best-locator" class="btn btn-primary">⭐ View on GitHub</a>
+          <a href="https://github.com/jogonzal79/best-locator/wiki" class="btn btn-secondary">📚 Documentation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Best Locator</h3>
+          <p>The world's first selector generator with organic navigation and intelligent toggle mode.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="https://github.com/jogonzal79/best-locator">GitHub Repository</a></p>
+          <p><a href="https://github.com/jogonzal79/best-locator/wiki">Documentation</a></p>
+          <p><a href="#features">Features</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Developer</h3>
+          <p>Jonathan Gonzalez</p>
+          <p>Automation Testing Enthusiast</p>
+          <p><a href="https://www.linkedin.com/in/jonathan-g-33607648/">LinkedIn</a></p>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/jogonzal79/best-locator" aria-label="GitHub">💻</a>
+        <a href="https://www.linkedin.com/in/jonathan-g-33607648/" aria-label="LinkedIn">💼</a>
+      </div>
+      <p>&copy; 2024–2025 Best Locator. MIT License. Made with ❤️ for the testing community.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Smooth in-page scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth'});
+        document.querySelectorAll('.nav-links a[aria-current="page"]').forEach(a=>a.removeAttribute('aria-current'));
+        if (this.closest('.nav-links')) {
+          this.setAttribute('aria-current','page');
+        }
+      });
+    });
+
+    // Fade-in intersection observer
+    const observerOptions={threshold:0.1,rootMargin:'0px 0px -50px 0px'};
+    const fadeObserver=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');fadeObserver.unobserve(entry.target);}});
+    },observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el=>fadeObserver.observe(el));
+
+    // Copy to clipboard
+    const installCmd=document.querySelector('.install-command');
+    function copyInstall(){
+      const text=installCmd.getAttribute('data-copy')||installCmd.textContent.trim();
+      navigator.clipboard.writeText(text).then(()=>{showCopied();});
+    }
+    function showCopied(){
+      const originalText=installCmd.textContent;
+      const originalBG=installCmd.style.background;
+      const originalColor=installCmd.style.color;
+      installCmd.textContent='Copied! ✅';
+      installCmd.style.background='#00ff88';
+      installCmd.style.color='#000';
+      setTimeout(()=>{
+        installCmd.textContent=originalText;
+        installCmd.style.background=originalBG;
+        installCmd.style.color=originalColor;
+      },2000);
+    }
+    installCmd.addEventListener('click',copyInstall);
+    installCmd.addEventListener('keypress',e=>{if(e.key==='Enter' || e.key===' '){copyInstall();}});
+
+    // Parallax effect for hero section
+    const hero=document.querySelector('.hero');
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(hero && !reduceMotion){
+      window.addEventListener('scroll',()=>{
+        hero.style.transform=`translateY(${window.pageYOffset*0.5}px)`;
+      });
+    }
+
+    // Dynamic navbar background
+    const nav=document.querySelector('header.nav');
+    window.addEventListener('scroll',()=>{
+      nav.style.background=window.scrollY>100?'rgba(10,10,10,.98)':'rgba(10,10,10,.95)';
+    });
+  </script>
+</body>
+</html>

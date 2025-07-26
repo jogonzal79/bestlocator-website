@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bestlocator.netlify.app/sitemap.xml

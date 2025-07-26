@@ -1,0 +1,75 @@
+\
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+$RECYCLE.BIN/
+*.swp
+*.swo
+
+# ---- Node & package managers ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Keep lockfiles (recommended for reproducible installs)
+# !package-lock.json
+# !yarn.lock
+# !pnpm-lock.yaml
+
+# ---- Build outputs (enable as needed) ----
+dist/
+build/
+out/
+.tmp/
+.temp/
+.cache/
+.cache-loader/
+.parcel-cache/
+.vite/
+
+# Framework-specific (rarely used here, but safe to ignore if present)
+.next/
+.nuxt/
+.svelte-kit/
+
+# ---- Coverage / tooling caches ----
+coverage/
+.nyc_output/
+.eslintcache
+.stylelintcache
+.prettier-cache
+*.tsbuildinfo
+
+# ---- Netlify ----
+.netlify/
+# If you generate these on build, ignore them; if you commit them, remove from ignore.
+sitemap.xml
+robots.txt
+
+# ---- Local plugin artifacts ----
+plugins/**/node_modules/
+plugins/**/.cache/
+
+# ---- IDE / editor ----
+.vscode/
+.idea/
+*.code-workspace
+
+# ---- Environment files ----
+.env
+.env.*
+!.env.example
+
+# ---- Temp / backups ----
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+
+# ---- Assets (optional) ----
+# assets/generated/
