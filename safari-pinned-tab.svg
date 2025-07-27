@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .s { fill: #000000; }
+    </style>
+  </defs>
+  <!-- Brackets -->
+  <path class="s" d="M10 30 q0-10 10-10 h8 v10 h-6 q-4 0-4 4 v32 q0 4 4 4 h6 v10 h-8 q-10 0-10-10z"/>
+  <path class="s" d="M90 30 q0-10-10-10 h-8 v10 h6 q4 0 4 4 v32 q0 4-4 4 h-6 v10 h8 q10 0 10-10z"/>
+  <!-- Pin -->
+  <path class="s" d="M50 20 a18 18 0 0 1 18 18 c0 10-11 22-18 36 c-7-14-18-26-18-36 a18 18 0 0 1 18-18z"/>
+  <circle cx="50" cy="38" r="6" fill="#000000"/>
+</svg>
